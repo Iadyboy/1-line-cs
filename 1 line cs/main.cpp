@@ -1,0 +1,2 @@
+#include <Windows.h>
+uintptr_t localPlayer; uintptr_t module; byte flags; int main() { module = (uintptr_t)(GetModuleHandle(L"client.dll")); while (true) { localPlayer = *(uintptr_t*)(module + 0xD8B2DC); flags = *(BYTE*)(localPlayer + 0x104); if (GetAsyncKeyState(VK_SPACE) && flags & (1 << 0)) { *(uintptr_t*)(module + 0x524CE84) = 6; } Sleep(1); } return 0; } // 1 line
